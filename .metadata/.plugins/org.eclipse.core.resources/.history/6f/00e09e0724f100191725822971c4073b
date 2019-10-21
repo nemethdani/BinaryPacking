@@ -1,0 +1,29 @@
+import java.util.Map;
+
+public class CarPark {
+	private int h,w;
+	private int[][] placings;
+	public CarPark(int h, int w) {
+		this.h=h;
+		this.w=w;
+		placings=new int[h][w];
+		
+	}
+	
+	public boolean fit(Car car, Position p, boolean orientation) {
+		if(p.x>w-car.w-1 || p.y>h-car.h-1) return false;
+		for(int i=0;i<car.h;++i) {
+			for(int j=0;j<car.w;++j) {
+				if(placings[i+p.y][j+p.x]!=-1) return false;
+			}
+		}
+		return true;
+	}
+	
+	public boolean park(Car car, Position p, boolean orientation) {
+		
+		return false;
+	}
+	
+	
+}

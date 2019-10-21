@@ -1,0 +1,83 @@
+import java.util.List;
+import java.util.Map;
+
+public class CarPark {
+	private int h,w;
+	private int[][] placings;
+	public CarPark(int h, int w) {
+		this.h=h;
+		this.w=w;
+		placings=new int[h][w];
+		for(int i=0;i<h;++i) {
+			for(int j=0;j<w;++j) {
+				placings[i][j]=-1;
+			}
+		}
+		
+	}
+	
+	private boolean fit(Car car, Position p, boolean orientation) {
+		int carw=car.w;
+		int carh=car.h;
+		if(orientation==false) {
+			int temp=carw;
+			carw=carh;
+			carh=temp;
+		}
+		if(p.x>w-carw-1 || p.y>h-carh-1) return false;
+		for(int i=0;i<carh;++i) {
+			for(int j=0;j<carw;++j) {
+				if(placings[i+p.y][j+p.x]!=-1) return false;
+			}
+		}
+		return true;
+	}
+	
+	private void register(Car car, Position p, boolean orientation, boolean deregister) {
+		int fill=car.id;
+		if(deregister==true) fill=-1;
+		int carw=car.w;
+		int carh=car.h;
+		if(orientation==false) {
+			int temp=carw;
+			carw=carh;
+			carh=temp;
+		}
+		
+		for(int i=0;i<carh;++i) {
+			for(int j=0;j<carw;++j) {
+				placings[i+p.y][j+p.x]=fill;
+			}
+		}
+		
+	}
+	
+	private Car getNextCar(Car current, List<Car> carlist) {
+		int currentindex= carlist.indexOf(current);
+		return carlist.get(currentindex+1);
+		
+	}
+	
+	public boolean park(Car car, Position p, boolean orientation, List<Car> carlist) {
+		if (fit(car, p, orientation) ){
+			register(car, p, orientation, false);
+			Car nextcar;
+			Position nextpos;
+			nextcar=getNextCar(car, carlist);
+			if(nextcar!=null) {
+				nextpos=getNextPosition();
+				while(nextpos!=null) {
+					if(park(nextcar, nextpos, true, carlist)) return true;
+					if(park(nextcar, nextpos, false, carlist)) return true;
+					nextpos=getNextPosition();
+				}
+				
+			}
+			register(car, p, orientation, true);
+			return false;
+		}
+		return false;
+	}
+	
+	
+}

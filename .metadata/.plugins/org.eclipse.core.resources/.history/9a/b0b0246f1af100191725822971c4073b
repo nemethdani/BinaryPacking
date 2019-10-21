@@ -1,0 +1,58 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+
+
+public class Main {
+	
+	
+	
+	@SuppressWarnings("resource")
+	private static CarPark inputreader(String[] args, List<Car> cars) throws FileNotFoundException {
+		
+		InputStreamReader isr;
+		Scanner sc;
+		if(args[0].contentEquals("inputs.txt")) {
+			File f=new File(args[0]);
+			sc=new Scanner(f);
+			
+		}
+		else {
+			isr=new InputStreamReader(System.in);
+			sc=new Scanner(isr);
+		}
+		sc.useDelimiter("\t");
+		int park_h, park_w;
+		park_h=sc.nextInt();
+		park_w=sc.nextInt();
+		
+		int numofcars=sc.nextInt();
+		
+		for(int i=0;i<numofcars;++i) {
+			int car_h = sc.nextInt();
+			int car_w=sc.nextInt();
+			cars.add(new Car(car_h, car_w));
+		}
+		return new CarPark(park_h, park_w);
+		
+	}
+
+	public static void main(String[] args) {
+		try {
+			
+			List<Car> cars=new ArrayList<Car>();
+		
+			CarPark carpark=inputreader(args, cars);
+			
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+
+}

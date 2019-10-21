@@ -1,0 +1,25 @@
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+
+public class Main {
+	
+	private static void inputreader(String[] args) throws FileNotFoundException {
+		
+		InputStreamReader isr;
+		if(args[0]=="inputs.txt") {
+			isr=new FileReader(args[0]);
+			
+		}
+		else {
+			isr=new InputStreamReader(System.in);
+		}
+	}
+
+	public static void main(String[] args) {
+		inputreader(args);
+		
+	}
+
+}

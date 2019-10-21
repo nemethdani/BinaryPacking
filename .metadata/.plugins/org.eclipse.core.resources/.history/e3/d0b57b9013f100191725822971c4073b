@@ -1,0 +1,11 @@
+
+public class Car implements Comparable<Car>{
+	private int w, h;
+	public Car(int w, int h) {
+		this.w=w;
+		this.h=h;
+	}
+	public int compareTo(Car other) {
+		return w*h-other.w*other.h;
+	}
+}

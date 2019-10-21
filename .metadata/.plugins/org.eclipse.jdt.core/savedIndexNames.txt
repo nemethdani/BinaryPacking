@@ -1,0 +1,3 @@
+INDEX VERSION 1.131+/home/dani/Documents/egyetem/mi/hf1/.metadata/.plugins/org.eclipse.jdt.core
+909626990.index
+1818989244.index
