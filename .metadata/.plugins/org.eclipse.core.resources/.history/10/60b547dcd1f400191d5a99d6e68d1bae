@@ -17,7 +17,7 @@ public class Main {
 		
 		InputStreamReader isr;
 		Scanner sc;
-		if(args.length>0) {
+		if(args[0].contentEquals("inputs.txt")) {
 			File f=new File(args[0]);
 			sc=new Scanner(f);
 			
