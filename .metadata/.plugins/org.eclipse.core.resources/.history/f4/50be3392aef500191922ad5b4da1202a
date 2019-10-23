@@ -100,20 +100,13 @@ public class CarPark {
 	}
 	
 	private Position getNextPosition(int rowindex, int colindex) {
-//		int col=getmincol(rowindex);
-		int col=colindex;
+		int col=getmincol(rowindex);
 		int row=rowindex;
-//		while(!(col<colindex && row> rowindex) && row<h-1) {
-//			++row;
-//			col=getmincol(row);
-//		}
-		if(colindex>=w-1) {
+		while(!(col<colindex && row> rowindex) && row<h-1) {
 			++row;
-			col=getmincol(rowindex);
-			return new Position(col, row);
+			col=getmincol(row);
 		}
-		
-		return new Position(col+1, row);
+		return new Position(col, row);
 	}
 	private Position getFirstPos() {
 		int rowindex=0;
@@ -133,19 +126,10 @@ public class CarPark {
 			nextcar=getNextCar(car, carlist);
 			if(nextcar!=null) {
 				
-				nextpos=getFirstPos();
-				
 				while(nextpos.x<w && nextpos.y<h) {
-					//this.print();System.out.println();
+					nextpos=getFirstPos();
+					this.print();System.out.println();
 					if(park(nextcar, nextpos, true, carlist)) return true;
-					//if(park(nextcar, nextpos, false, carlist)) return true;
-					nextpos=getNextPosition(nextpos.y, nextpos.x);
-				}
-				nextpos=getFirstPos();
-				
-				while(nextpos.x<w && nextpos.y<h) {
-					//this.print();System.out.println();
-					//if(park(nextcar, nextpos, true, carlist)) return true;
 					if(park(nextcar, nextpos, false, carlist)) return true;
 					nextpos=getNextPosition(nextpos.y, nextpos.x);
 				}

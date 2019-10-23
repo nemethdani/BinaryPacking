@@ -10,8 +10,5 @@ public class Car implements Comparable<Car>{
 		return w*h-other.w*other.h;
 	}
 	
-//	public int compareTo(Car other) {
-//		return Math.max(w,h)-Math.max(other.w, other.h);
-//	}
 	
 }

@@ -101,7 +101,7 @@ public class CarPark {
 	
 	private Position getNextPosition(int rowindex, int colindex) {
 //		int col=getmincol(rowindex);
-		int col=colindex;
+		int col;
 		int row=rowindex;
 //		while(!(col<colindex && row> rowindex) && row<h-1) {
 //			++row;
@@ -112,8 +112,7 @@ public class CarPark {
 			col=getmincol(rowindex);
 			return new Position(col, row);
 		}
-		
-		return new Position(col+1, row);
+		return new Position(col, row);
 	}
 	private Position getFirstPos() {
 		int rowindex=0;
@@ -136,7 +135,7 @@ public class CarPark {
 				nextpos=getFirstPos();
 				
 				while(nextpos.x<w && nextpos.y<h) {
-					//this.print();System.out.println();
+					this.print();System.out.println();
 					if(park(nextcar, nextpos, true, carlist)) return true;
 					//if(park(nextcar, nextpos, false, carlist)) return true;
 					nextpos=getNextPosition(nextpos.y, nextpos.x);
@@ -144,7 +143,7 @@ public class CarPark {
 				nextpos=getFirstPos();
 				
 				while(nextpos.x<w && nextpos.y<h) {
-					//this.print();System.out.println();
+					this.print();System.out.println();
 					//if(park(nextcar, nextpos, true, carlist)) return true;
 					if(park(nextcar, nextpos, false, carlist)) return true;
 					nextpos=getNextPosition(nextpos.y, nextpos.x);

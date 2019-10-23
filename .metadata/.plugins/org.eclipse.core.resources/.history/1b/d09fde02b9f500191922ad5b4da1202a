@@ -136,7 +136,7 @@ public class CarPark {
 				nextpos=getFirstPos();
 				
 				while(nextpos.x<w && nextpos.y<h) {
-					//this.print();System.out.println();
+					this.print();System.out.println();
 					if(park(nextcar, nextpos, true, carlist)) return true;
 					//if(park(nextcar, nextpos, false, carlist)) return true;
 					nextpos=getNextPosition(nextpos.y, nextpos.x);
@@ -144,7 +144,7 @@ public class CarPark {
 				nextpos=getFirstPos();
 				
 				while(nextpos.x<w && nextpos.y<h) {
-					//this.print();System.out.println();
+					this.print();System.out.println();
 					//if(park(nextcar, nextpos, true, carlist)) return true;
 					if(park(nextcar, nextpos, false, carlist)) return true;
 					nextpos=getNextPosition(nextpos.y, nextpos.x);
